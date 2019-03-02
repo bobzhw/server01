@@ -1,6 +1,6 @@
 #include <iostream>
 #include"base/Thread.h"
-
+#include "base/LogFile.h"
 using namespace std;
 void* dosomework1()
 {
@@ -9,7 +9,8 @@ void* dosomework1()
 
 int main()
 {
-    Thread* t = new Thread(dosomework1);
-    t->start();
-    t->join();
+   LogFile* lf = new LogFile("hshsh");
+   lf->append("xixiix", sizeof("xixiix"));
+   lf->append("wori", sizeof("wori"));
+   lf->flush();
 }
