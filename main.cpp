@@ -1,6 +1,7 @@
 #include <iostream>
 #include"base/Thread.h"
-#include "base/LogFile.h"
+#include "base/LogStream.h"
+#include"base/AsyncLogging.h"
 using namespace std;
 void* dosomework1()
 {
@@ -9,8 +10,13 @@ void* dosomework1()
 
 int main()
 {
-   LogFile* lf = new LogFile("hshsh");
-   lf->append("xixiix", sizeof("xixiix"));
-   lf->append("wori", sizeof("wori"));
-   lf->flush();
+    AsyncLogging as("name");
+    as.start();
+    for(int i = 0;i<10;i++)
+    {
+        char* c = "wocaonidayede wocao";
+        size_t s = strlen(c);
+        as.append(c,s);
+    }
+    sleep(1);
 }
